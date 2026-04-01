@@ -1,26 +1,371 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Oswald";
+  src: url("/Oswald-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --white: white;
+  --black: black;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  flex-direction: column;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  display: flex;
+  margin: 0;
+  min-height: 100vh;
+  background: #fff;
+  color: #000;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+a {
+  color: #3478f6;
+}
+
+/* Layout helpers */
+.vflex {
+  flex-direction: column;
+  align-items: flex-start;
+  display: flex;
+}
+
+.hflex {
+  flex-direction: row;
+  align-items: flex-start;
+  display: flex;
+}
+
+/* Section */
+.section {
+  background-color: #fff;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  overflow: visible;
+  width: 100%;
+}
+
+.section.light-blue {
+  background-color: #286deb;
+  background-image: linear-gradient(#286deb, #286deb);
+}
+
+/* Container */
+.custom-container {
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+}
+
+/* Typography */
+.h1-calc {
+  z-index: 100;
+  letter-spacing: -1px;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 105%;
+  position: relative;
+  color: #fff;
+}
+
+.vstack {
+  flex-direction: column;
+  align-items: flex-start;
+  display: flex;
+  position: relative;
+}
+
+.text-large {
+  font-size: 20px;
+  line-height: 140%;
+  color: #fff;
+}
+
+.text {
+  text-align: center;
+  font-size: 17px;
+  line-height: 22px;
+}
+
+.text.bold {
+  font-weight: 600;
+}
+
+.centered {
+  text-align: center;
+}
+
+/* Calculator */
+.calculator-container {
+  width: 100%;
+  max-width: 400px;
+  margin-left: 170px;
+  margin-right: 30px;
+  padding-top: 64px;
+  position: relative;
+}
+
+.calculator-wrapper {
+  background-color: #fff;
+  border-radius: 40px;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 40px;
+  display: flex;
+  box-shadow: 0 0 40px 11px #0000001c;
+}
+
+.calculator-wrapper.top {
+  margin-top: 32px;
+  padding: 28px;
+  display: none;
+}
+
+.calculator-wrapper.result {
+  z-index: 100;
+  margin-top: 20px;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 30px;
+  display: none;
+  position: relative;
+}
+
+/* Input */
+.input-lp {
+  text-align: center;
+  border: 3px solid #000;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  padding: 0 10px;
+  font-family: "Oswald", sans-serif;
+  font-size: 65px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.input-lp::placeholder {
+  color: black;
+  opacity: 0.2;
+}
+
+.small-input {
+  text-align: center;
+  border: 1px solid #000;
+  border-radius: 16px;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+}
+
+/* Button */
+.button {
+  background-color: #3478f6;
+  border-radius: 100px;
+  padding: 16px;
+  font-size: 16px;
+  transition: all 0.2s;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+}
+
+.button:hover {
+  background-color: #2a63cc;
+}
+
+/* Car card */
+.car {
+  gap: 12px;
+  border: 1px solid #b4b4b4;
+  border-radius: 16px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 12px;
+  display: flex;
+}
+
+/* Results */
+.cost {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 40px;
+}
+
+.costmessage {
+  color: #6e6e6e;
+  text-align: center;
+  font-size: 17px;
+}
+
+/* Spacers */
+.spacer-8 {
+  width: 8px;
+  min-width: 8px;
+  height: 8px;
+  min-height: 8px;
+}
+
+.spacer-16 {
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+  min-height: 16px;
+}
+
+.spacer-32 {
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+  min-height: 32px;
+}
+
+.spacer-64 {
+  width: 64px;
+  min-width: 64px;
+  height: 64px;
+  min-height: 64px;
+}
+
+/* Update block */
+.update-block {
+  background-color: #e9e9e9;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  padding: 25px;
+}
+
+/* Rich text / content */
+.rich-text {
+  max-width: 700px;
+}
+
+.rich-text p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.rich-text li {
+  margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.content-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 991px) {
+  .custom-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .calculator-container {
+    padding-top: 32px;
+  }
+
+  .section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .calculator-container {
+    margin-left: 0;
+  }
+
+  .section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  body {
+    padding: 0;
+  }
+
+  .h1-calc {
+    text-align: center;
+    margin-top: 0;
+    font-size: 40px;
+  }
+
+  .vstack {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .custom-container {
+    align-items: stretch;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .text-large {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .calculator-container,
+  .calc-input-wrapper {
+    width: 100%;
+  }
+
+  .calculator-wrapper {
+    width: 100%;
+    padding: 40px;
+  }
+
+  .calculator-wrapper.top {
+    display: none;
+  }
+
+  .list {
+    padding-left: 0;
+  }
 }
