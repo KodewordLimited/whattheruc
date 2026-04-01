@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -37,20 +36,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
-        <Script
-          src="https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"
-          strategy="lazyOnload"
-        />
-        <Script id="mixpanel-init" strategy="lazyOnload">
-          {`
-            window.mixpanel = window.mixpanel || [];
-            mixpanel.init("1a8afb3f761d724d07e9797b9780dd00");
-            mixpanel.track('page viewed', {
-              'page name': document.title,
-              'url': window.location.pathname
-            });
-          `}
-        </Script>
       </body>
     </html>
   );

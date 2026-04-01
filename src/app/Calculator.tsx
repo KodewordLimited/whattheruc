@@ -88,13 +88,6 @@ export default function Calculator() {
         year,
         fuelType,
       });
-
-      if (typeof window !== "undefined" && (window as never as Record<string, unknown>).mixpanel) {
-        (window as never as Record<string, { track: (name: string, data: Record<string, string>) => void }>).mixpanel.track("click", {
-          "clicked element": "Calculate",
-          "custom attributes": JSON.stringify({ "data-action": "calculate" }),
-        });
-      }
     } catch (error) {
       const message =
         error instanceof Error ? error.message : "An error occurred";
