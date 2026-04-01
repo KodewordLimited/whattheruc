@@ -27,16 +27,10 @@ export default function Calculator() {
     if (!licensePlate.trim()) return;
     setLoading(true);
 
-    const apiUrl = `https://api.roadtrip.nz/vehicles/public?Search=${encodeURIComponent(licensePlate)}&Country=NZ`;
+    const apiUrl = `/api/vehicle?search=${encodeURIComponent(licensePlate)}`;
 
     try {
-      const response = await fetch(apiUrl, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(apiUrl);
 
       if (!response.ok) {
         throw new Error("Network response was not ok: " + response.statusText);
